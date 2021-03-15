@@ -1,0 +1,12 @@
+﻿  String.cpp
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab5\String\String.cpp(111,14): error C2228: выражение слева от ".size" должно представлять класс, структуру или объединение
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab5\String\String.cpp(113,55): error C2109: для индекса требуется массив или указатель
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab5\String\String.cpp(113,65): error C2678: бинарный "[": не найден оператор, принимающий левый операнд типа "const string" (или приемлемое преобразование отсутствует)
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab5\String\String.cpp(85,10): message : может быть "char string::operator [](unsigned int)"
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab5\String\String.cpp(113,65): message : при попытке сопоставить список аргументов "(const string, unsigned int)"
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab5\String\String.cpp(114,75): error C2109: для индекса требуется массив или указатель
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab5\String\String.cpp(114,97): error C2678: бинарный "[": не найден оператор, принимающий левый операнд типа "const string" (или приемлемое преобразование отсутствует)
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab5\String\String.cpp(85,10): message : может быть "char string::operator [](unsigned int)"
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab5\String\String.cpp(114,97): message : при попытке сопоставить список аргументов "(const string, unsigned int)"
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab5\String\String.cpp(115,15): error C2440: return: невозможно преобразовать "string (__cdecl *)(void)" в "string"
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab5\String\String.cpp(115,15): message : Ни один конструктор не смог принять исходный тип, либо разрешение перегрузки конструктора неоднозначно
