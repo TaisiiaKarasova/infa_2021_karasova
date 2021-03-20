@@ -1,2 +1,4 @@
 C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab5\String\Debug\String.exe
 C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab5\String\Debug\String.pdb
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab6\String\Debug\String.exe
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab6\String\Debug\String.pdb

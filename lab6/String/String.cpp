@@ -8,7 +8,7 @@ struct string
 {
     char* str;
     size_t size;
-    size_t capacity = size * 2;
+    size_t capacity;
 
     string () 
     {
@@ -19,32 +19,45 @@ struct string
 
     string(size_t cnt, char c)
     {
-        str = new char[cnt];
         size = cnt;
         capacity = 2 * size;
-        for (unsigned int i = 0; i < cnt; i++) str[i] = c;
+        str = new char[capacity];
+        for (unsigned int i = 0; i < cnt; i++) 
+            str[i] = c;
+        str[size] = 0;
     }
 
     string(const string& s) 
     {  
-        str = new char[s.size];
         size = s.size;
         capacity = 2 * size;
-        for (unsigned int i = 0; i < size; i++) str[i] = s.str[i];
+        str = new char[capacity];
+        for (unsigned int i = 0; i < size; i++) 
+            str[i] = s.str[i];
+        str[size] = 0;
     }
 
     ~string()
     {
-        delete[] str;
+       if (str != NULL) delete[] str;
     }
 
     string& operator= (const string& new_str) 
     {  
-        str = new char[new_str.size];
+        if (new_str.size > capacity)
+        {
+            if (str != NULL) delete[] str;
+            capacity = new_str.size * 2;
+            str = new char[capacity];
+        }
         size = new_str.size;
-        capacity = 2 * size;
-        for (unsigned int i = 0; i < size; i++) str[i] = new_str.str[i];
-        //не ясно что должна возвращать функция такого типа
+        capacity = new_str.capacity;
+        for (unsigned int i = 0; i < size; i++)
+        {
+            str[i] = new_str[i];
+        }
+        str[size] = 0;
+        return *this;
     }
 
     bool operator== (const string& other) 
@@ -69,58 +82,156 @@ struct string
 
     bool operator> (const string& other) 
     {  
+        unsigned int i = 0;
+        while ((i < size) && (i < other.size) && (str[i] == other[i])) ++i;
+        return (str[i] > other[i]);
     
     }
 
     bool operator< (const string& other) 
     {  
+        unsigned int i = 0;
+        while ((i < size) && (i < other.size) && (str[i] == other[i])) i++;
+        return (str[i] < other[i]);
     
     }
 
     string& operator+= (const string& other) 
     {  
-    
+        if ((size + other.size) >= capacity)
+        {
+            resize((size + other.size) * 2);
+        }
+        for (unsigned int i = 0; i < other.size; i++)
+        {
+            str[i + size] = other[i];
+        }
+        size += other.size;
+        str[size] = 0;
+        return *this;
     }
 
-    char operator[] (unsigned int pos) 
+    string& operator+= (const char c)
+    {
+        if ((size + 1) >= capacity)
+        {
+            resize((size + 1) * 2);
+        }
+        str[size] = c;
+        size += 1;
+        str[size] = 0;
+        return *this;
+    }
+
+    char operator[] (unsigned int pos) const
     {  
         return str[pos];
     }
 
-    void append(const string other);  // дописать в конец данной строки другую
+    void append(const string &other)
+    {
+        *this += other;
+    }
 
-    void resize(unsigned int new_capacity);  // увеличить/уменьшить емкость строки
+    void resize(unsigned int new_capacity)
+    {
+        char* new_str = NULL;
+        if (new_capacity == 0)
+        {
+            size = 0;
+        }
+        else
+        {
+            new_str = new char[new_capacity];
+            if (new_capacity <= size)
+                size = new_capacity - 1;
+            for (unsigned int i = 0; i < size; ++i)
+                new_str[i] = str[i];
+        }
+        if (str) delete str;
+        str = new_str;
+        capacity = new_capacity;
+    }
 
-    void reserve(unsigned int capacity); // зарезервировать память в нужном объеме
+    void reserve(unsigned int capacity)
+    {
+        resize(std::max(capacity, this->capacity));
+    }
 
-    void insert(unsigned int pos, string other);  // Вставка другой строки внутрь данной
+    void insert(unsigned int pos, string other)
+    {
+        if (size + other.size >= capacity)
+            resize((size + other.size) * 2);
+        for (unsigned int i = size; i >= pos; i--)
+            str[i + other.size] = str[i];
+        for (unsigned int i = 0; i < other.size; i++)
+            str[pos + i] = other[i];
+    }
 
-    void shrink_to_fit();  //очистить неиспользуемую память
+    void shrink_to_fit()
+    {
+        resize(size + 1);
+    }
 
-    void clear();   //очистить содержимое строки, занимаемое место при этом не меняется
+    void clear()
+    {
+        if (str)
+        {
+            str[0] = 0;
+            size = 0;
+        }
+    }
 
-    friend std::ostream& operator<< (std::ostream& ostr, const string& str) {  }
-    friend std::istream& operator>> (std::istream& istr, const string& str) {  }
+    friend std::ostream& operator<< (std::ostream& ostr, const string& str) 
+    {  
+        return ostr << str.str;
+    
+    }
+    friend std::istream& operator>> (std::istream& istr, string& str) 
+    {  
+        str.clear();
+        char t;
+        while ((!istr.eof()) && (t == istr.get()) && (t != ' ') && (t != '\n'))
+            str += t;
+        return istr;
+    
+    }
 
 };
 
 
 string operator + (const string& str1, const string& str2)
 {
-    string res();
-    res.size = str1.size + str2.size;
-    res.capacity = res.size * 2;
-    for (unsigned int i = 0; i < str1.size; i++) res[i] = str1[i];
-    for (unsigned int i = str1.size; i < str1.size + str2.size; i++) res[i] = str2[i - str1.size];
-    return res();
+    string res;
+    res += str1;
+    res += str2;
+    return res;
 }
 
 
-int stoi(const string str, std::size_t pos = 0, int base = 10);
-// Преобразование числа, записанного символами в строке, в int
-// base - основание системы счисления
-// Числа могут быть отрицательными
-// Обработка чисел в сс > 10. Большие и маленькие буквы.
+int StrToInt (const string str, std::size_t pos = 0, int base = 10)
+{
+    int value = 0;
+    int number;
+    if (str[0] == '-') pos += 1;
+    unsigned int length = str.size; // to avoid recounting it during each iteration
+    while (pos < length)
+    {
+        if (str[pos] >= '0' && str[pos] <= '9' && str[pos] < '0' + base)
+            number = str[pos] - '0';
+        else if (str[pos] >= 'A' && str[pos] < 'A' - 10 + base)
+            number = str[pos] - 'A' + 10;
+        else if (str[pos] >= 'a' && str[pos] < 'a' - 10 + base)
+            number = str[pos] - 'a' + 10;
+        else break;
+        value *= base;
+        value += number;
+        pos++;
+    }
+    if (str[0] == '-') return -value;
+    else return value;
+
+}
 
 int main()
 {
