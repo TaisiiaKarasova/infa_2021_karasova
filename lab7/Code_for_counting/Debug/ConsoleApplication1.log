@@ -1,0 +1,57 @@
+﻿  ConsoleApplication1.cpp
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab7\Code_for_counting\ConsoleApplication1.cpp(35,30): warning C4244: аргумент: преобразование "__int64" в "const _Ty", возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab7\Code_for_counting\ConsoleApplication1.cpp(56,49): warning C4244: аргумент: преобразование "__int64" в "_Ty", возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab7\Code_for_counting\ConsoleApplication1.cpp(73,47): warning C4244: аргумент: преобразование "__int64" в "_Ty", возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab7\Code_for_counting\ConsoleApplication1.cpp(109,43): warning C4244: аргумент: преобразование "__int64" в "_Ty", возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab7\Code_for_counting\ConsoleApplication1.cpp(125,41): warning C4244: аргумент: преобразование "__int64" в "_Ty", возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab7\Code_for_counting\ConsoleApplication1.cpp(160,39): warning C4244: аргумент: преобразование "__int64" в "const _Ty", возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab7\Code_for_counting\ConsoleApplication1.cpp(174,37): warning C4244: аргумент: преобразование "__int64" в "const _Ty", возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab7\Code_for_counting\ConsoleApplication1.cpp(210,45): warning C4244: аргумент: преобразование "__int64" в "_Ty", возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab7\Code_for_counting\ConsoleApplication1.cpp(226,43): warning C4244: аргумент: преобразование "__int64" в "_Ty", возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab7\Code_for_counting\ConsoleApplication1.cpp(263,46): warning C4244: аргумент: преобразование "__int64" в "_Ty", возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab7\Code_for_counting\ConsoleApplication1.cpp(284,44): warning C4244: аргумент: преобразование "__int64" в "_Ty", возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+  ConsoleApplication1.vcxproj -> C:\Users\User\Desktop\же ву на гране срыва\2 сем\infa_2021_karasova\lab7\Code_for_counting\Debug\ConsoleApplication1.exe
