@@ -6,21 +6,33 @@
 int main()
 {
     long long int min_time = LLONG_MAX;
-    std::vector<int> cycle_time;
+    std::vector<long long> cycle_time;
 
-    std::vector<int> creation_fill_vector;
-    std::vector<int> add_end_vector;
-    std::vector<int> add_begin_vector;
-    std::vector<int> add_middle_vector;
-    std::vector<int> call_element_vector;
+    std::vector<long long> creation_fill_vector;
+    std::vector<long long> add_end_vector;
+    std::vector<long long> add_begin_vector;
+    std::vector<long long> add_middle_vector;
+    std::vector<long long> call_element_vector;
 
-    std::vector<int> creation_fill_list;
-    std::vector<int> add_end_list;
-    std::vector<int> add_begin_list;
-    std::vector<int> add_middle_list;
-    std::vector<int> call_element_list;
+    std::vector<long long> creation_fill_list;
+    std::vector<long long> add_end_list;
+    std::vector<long long> add_begin_list;
+    std::vector<long long> add_middle_list;
+    std::vector<long long> call_element_list;
 
     /* finding the time it takes to organize the cycle */
+    for (int n = 1; n <= 5; n++)
+    {
+        auto start = std::chrono::high_resolution_clock::now();
+        for (int i = 1; i <= 100; i++);
+        auto end = std::chrono::high_resolution_clock::now();
+        auto time = end - start;
+        if (time.count() < min_time)
+            min_time = time.count();
+    }
+    cycle_time.push_back(min_time);
+    min_time = LLONG_MAX;
+
     for (int j = 1; j <= 10; j++)
     {
         for (int n = 1; n <= 5; n++)
@@ -43,7 +55,6 @@ int main()
         {
             auto start = std::chrono::high_resolution_clock::now();
             std::vector<int> vec;
-            vec.reserve(j * 10000);
             for (int i = 1; i <= j * 10000; i++)
             {
                 vec.push_back(i);
@@ -53,14 +64,13 @@ int main()
             if (time.count() < min_time)
                 min_time = time.count();
         }
-        creation_fill_vector.push_back(min_time - cycle_time[j - 1]);
+        creation_fill_vector.push_back(min_time - cycle_time[j]);
         min_time = LLONG_MAX;
 
         for (int n = 1; n <= 5; n++)
         {
             auto start = std::chrono::high_resolution_clock::now();
             std::list<int> lis;
-            lis.resize(j * 10000);
             for (int i = 1; i <= j * 10000; i++)
             {
                 lis.push_back(i);
@@ -70,7 +80,7 @@ int main()
             if (time.count() < min_time)
                 min_time = time.count();
         }
-        creation_fill_list.push_back(min_time - cycle_time[j - 1]);
+        creation_fill_list.push_back(min_time - cycle_time[j]);
         min_time = LLONG_MAX;
     }
 
@@ -106,7 +116,7 @@ int main()
             if (time.count() < min_time)
                 min_time = time.count();
         }
-        add_end_vector.push_back(min_time - cycle_time[j - 1]);
+        add_end_vector.push_back(min_time - cycle_time[j]);
         min_time = LLONG_MAX;
 
         for (int n = 1; n <= 5; n++)
@@ -122,7 +132,7 @@ int main()
             if (time.count() < min_time)
                 min_time = time.count();
         }
-        add_end_list.push_back(min_time - cycle_time[j - 1]);
+        add_end_list.push_back(min_time - cycle_time[j]);
         min_time = LLONG_MAX;
     }
 
@@ -197,8 +207,10 @@ int main()
         for (int n = 1; n <= 5; n++)
         {
             std::vector<int> vec;
-            auto start = std::chrono::high_resolution_clock::now();
             for (int i = 1; i <= j * 10000; i++)
+                vec.push_back(0);
+            auto start = std::chrono::high_resolution_clock::now();
+            for (int i = 1; i <= j * 100; i++)
             {
                 vec.insert(vec.begin(), 0);
             }
@@ -207,7 +219,7 @@ int main()
             if (time.count() < min_time)
                 min_time = time.count();
         }
-        add_begin_vector.push_back(min_time - cycle_time[j - 1]);
+        add_begin_vector.push_back(min_time - cycle_time[0]);
         min_time = LLONG_MAX;
 
         for (int n = 1; n <= 5; n++)
@@ -215,6 +227,8 @@ int main()
             auto start = std::chrono::high_resolution_clock::now();
             std::list<int> lis;
             for (int i = 1; i <= j * 10000; i++)
+                lis.push_back(0);
+            for (int i = 1; i <= j * 100; i++)
             {
                 lis.push_front(0);
             }
@@ -223,7 +237,7 @@ int main()
             if (time.count() < min_time)
                 min_time = time.count();
         }
-        add_begin_list.push_back(min_time - cycle_time[j - 1]);
+        add_begin_list.push_back(min_time - cycle_time[0]);
         min_time = LLONG_MAX;
     }
 
@@ -250,8 +264,10 @@ int main()
         for (int n = 1; n <= 5; n++)
         {
             std::vector<int> vec;
-            auto start = std::chrono::high_resolution_clock::now();
             for (int i = 1; i <= j * 10000; i++)
+                vec.push_back(0);
+            auto start = std::chrono::high_resolution_clock::now();
+            for (int i = 1; i <= j * 100; i++)
             {
                 vec.insert(vec.begin() + vec.size() / 2, 0);
             }
@@ -260,14 +276,16 @@ int main()
             if (time.count() < min_time)
                 min_time = time.count();
         }
-        add_middle_vector.push_back(min_time - cycle_time[j - 1]);
+        add_middle_vector.push_back(min_time - cycle_time[0]);
         min_time = LLONG_MAX;
 
         for (int n = 1; n <= 5; n++)
         {
             std::list<int> lis;
-            auto start = std::chrono::high_resolution_clock::now();
             for (int i = 1; i <= j * 10000; i++)
+                lis.push_back(0);
+            auto start = std::chrono::high_resolution_clock::now();
+            for (int i = 1; i <= j * 100; i++)
             {
                 auto it = lis.begin();
                 int half_size = lis.size() / 2;
@@ -281,7 +299,8 @@ int main()
             if (time.count() <= 0 && (INT_MAX - time.count()) < min_time)
                 min_time = INT_MAX - time.count();
         }
-        add_middle_list.push_back(min_time - cycle_time[j - 1]);
+        std::cout << min_time <<' '<< cycle_time[0] << '\n';
+        add_middle_list.push_back(min_time - cycle_time[0]);
         min_time = LLONG_MAX;
     }
 
