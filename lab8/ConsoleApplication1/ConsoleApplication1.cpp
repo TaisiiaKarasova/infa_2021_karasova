@@ -141,7 +141,6 @@ std::vector <massiv> tests;
 int main()
 {
     long long int min_time = LLONG_MAX;
-    std::vector<long long> generation_time;
 
     std::vector<long long> bubble_time;
     std::vector<long long> selection_time;
@@ -170,6 +169,11 @@ int main()
     {
         for (int n = 1; n <= 5; n++)
         {
+            for (int j = 0; j < 10; j++)
+            {
+                for (int i = 0; i < tests[j].size; i++)
+                    tests[j].a[i] = int_dist(engine);
+            }
             auto start = std::chrono::high_resolution_clock::now();
             bubble(tests[j].a, tests[j].size - 1);
             auto end = std::chrono::high_resolution_clock::now();
@@ -195,18 +199,17 @@ int main()
 
 
     //Insertion
-    //generation
-    for (int j = 0; j < 10; j++)
-    {
-        for (int i = 0; i < tests[j].size; i++)
-            tests[j].a[i] = int_dist(engine);
-    }
-
+    
     //counting time
     for (int j = 0; j < 10; j++)
     {
         for (int n = 1; n <= 5; n++)
         {
+            for (int j = 0; j < 10; j++)
+            {
+                for (int i = 0; i < tests[j].size; i++)
+                    tests[j].a[i] = int_dist(engine);
+            }
             auto start = std::chrono::high_resolution_clock::now();
             insertion(tests[j].a, tests[j].size - 1);
             auto end = std::chrono::high_resolution_clock::now();
@@ -239,11 +242,16 @@ int main()
             tests[j].a[i] = int_dist(engine);
     }
 
-    //counting time
     for (int j = 0; j < 10; j++)
     {
         for (int n = 1; n <= 5; n++)
         {
+            for (int j = 0; j < 10; j++)
+            {
+                for (int i = 0; i < tests[j].size; i++)
+                    tests[j].a[i] = int_dist(engine);
+            }
+
             auto start = std::chrono::high_resolution_clock::now();
             selection(tests[j].a, tests[j].size - 1);
             auto end = std::chrono::high_resolution_clock::now();
@@ -268,18 +276,19 @@ int main()
     std::cout << '\n';
 
     //Pyramide
-    //generation
-    for (int j = 0; j < 10; j++)
-    {
-        for (int i = 0; i < tests[j].size; i++)
-            tests[j].a[i] = int_dist(engine);
-    }
+
+   
 
     //counting time
     for (int j = 0; j < 10; j++)
     {
         for (int n = 1; n <= 5; n++)
         {
+            for (int j = 0; j < 10; j++)
+            {
+                for (int i = 0; i < tests[j].size; i++)
+                    tests[j].a[i] = int_dist(engine);
+            }
             auto start = std::chrono::high_resolution_clock::now();
             heapsort(tests[j].a, tests[j].size - 1);
             auto end = std::chrono::high_resolution_clock::now();
@@ -304,18 +313,18 @@ int main()
     std::cout << '\n';
 
     //Merge
-    //generation
-    for (int j = 0; j < 10; j++)
-    {
-        for (int i = 0; i < tests[j].size; i++)
-            tests[j].a[i] = int_dist(engine);
-    }
+
 
     //counting time
     for (int j = 0; j < 10; j++)
     {
         for (int n = 1; n <= 5; n++)
         {
+            for (int j = 0; j < 10; j++)
+            {
+                for (int i = 0; i < tests[j].size; i++)
+                    tests[j].a[i] = int_dist(engine);
+            }
             auto start = std::chrono::high_resolution_clock::now();
             mergesort(tests[j].a, 0, tests[j].size - 1);
             auto end = std::chrono::high_resolution_clock::now();
